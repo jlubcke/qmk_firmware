@@ -1,18 +1,3 @@
-/* Copyright 2019 Thomas Baart <thomas@splitkb.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 #include QMK_KEYBOARD_H
 
 #include <stdio.h>
@@ -100,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_UPPER] = LAYOUT(
-     KC_TAB  ,  KC_F1  ,  KC_F2  ,  KC_F3  ,  KC_F4  ,   KC_5  ,                                         KC_PGUP , KC_HOME , KC_UP   , KC_END  , KC_INS  , KC_BSLS ,
+     KC_TAB  ,  KC_F1  ,  KC_F2  ,  KC_F3  ,  KC_F4  ,  KC_F5  ,                                         KC_PGUP , KC_HOME , KC_UP   , KC_END  , KC_INS  , KC_BSLS ,
      CTL_ESC ,  KC_F6  ,  KC_F7  ,  KC_F8  ,  KC_F9  ,  KC_F10 ,                                         KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_LCBR , KC_RCBR ,
      _______ ,  KC_F11 ,  KC_F12 , _______ , _______ , _______ , _______ , _______ , _______ , _______ , KC_BSPC , KC_LPRN , KC_RPRN , KC_LBRC , KC_RBRC , _______ ,
                                    KC_NO   , _______ , KC_LALT , KC_LGUI , _______ , _______ , KC_RGUI , KC_RALT , KC_APP  , KC_NO
@@ -110,20 +95,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Media, RGB
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |M Prev|M Play|M Next| VolDn| VolUp|                              |      |      |      |      |      |        |
+ * |        |M Prev|M Play|M Next| VolDn| VolUp|                              |      |      |      |      |      | Power  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * | CapsLk |ScolLk| NumLk|      |ScrlLk| Pause|                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
+ * | CapsLk |ScolLk| NumLk|      |      | Mute |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      | Reset|  | Reset|      |      | SAD  | HUD  | VAD  | RMOD |        |
+ * |        |      |      |      |ScrlLk| Pause|      | Reset|  | Reset|      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
-      _______ , KC_MPRV , KC_MPLY , KC_MNXT , KC_VOLD , KC_VOLU ,                                         _______ , _______ , _______ , _______ ,  _______ , _______ ,
-      KC_CAPS , KC_SCRL , KC_NUM  , _______ , KC_SCRL , KC_PAUS ,                                         RGB_TOG , RGB_SAI , RGB_HUI , RGB_VAI ,  RGB_MOD , _______ ,
-      _______ , _______ , _______ , _______ , _______ , _______ , _______ , QK_BOOT , QK_BOOT , _______ , _______ , RGB_SAD , RGB_HUD , RGB_VAD , RGB_RMOD , _______ ,
+      _______ , KC_MPRV , KC_MPLY , KC_MNXT , KC_VOLD , KC_VOLU ,                                         _______ , _______ , _______ , _______ ,  _______ ,  KC_PWR ,
+      KC_CAPS , KC_SCRL , KC_NUM  , _______ , _______ , KC_MUTE ,                                         RGB_TOG , RGB_SAI , RGB_HUI , RGB_VAI ,  RGB_MOD , _______ ,
+      _______ , _______ , _______ , _______ , KC_SCRL , KC_PAUS , _______ , QK_BOOT , QK_BOOT , _______ , _______ , RGB_SAD , RGB_HUD , RGB_VAD , RGB_RMOD , _______ ,
                                     KC_NO   , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , KC_NO
     ),
 };
@@ -300,11 +285,22 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 break;
         }
     } else if (index == 1) {
-        // Page up/Page down
-        if (clockwise) {
-            tap_code(KC_PGDN);
-        } else {
-            tap_code(KC_PGUP);
+        switch(biton32(layer_state)) {
+            case _LOWER:
+                // Arrows
+                if (clockwise){
+                    tap_code(KC_RGHT);
+                } else {
+                    tap_code(KC_LEFT);
+                }
+                break;
+            default:
+                // Page up/Page down
+                if (clockwise) {
+                    tap_code(KC_PGDN);
+                } else {
+                    tap_code(KC_PGUP);
+                }
         }
     }
     return false;
