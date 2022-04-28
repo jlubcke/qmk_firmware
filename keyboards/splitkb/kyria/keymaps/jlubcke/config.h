@@ -24,6 +24,8 @@
 #    define RGBLIGHT_LIMIT_VAL 150
 #endif
 
+#define ENCODER_DIRECTION_FLIP
+
 // Lets you roll mod-tap keys
 #define IGNORE_MOD_TAP_INTERRUPT
 
