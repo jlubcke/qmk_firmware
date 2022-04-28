@@ -270,13 +270,24 @@ void render_anim(void)
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-
     if (index == 0) {
-        // Switch app
-        if (clockwise) {
-            tap_code16(KC_TAB);
-        } else {
-            tap_code16(S(KC_TAB));
+        switch(biton32(layer_state)) {
+            case _ADJUST:
+                // Volume
+                if (clockwise){
+                    tap_code(KC_VOLU);
+                } else{
+                    tap_code(KC_VOLD);
+                }
+                break;
+            default:
+                // Switch app
+                if (clockwise) {
+                    tap_code16(KC_TAB);
+                } else {
+                    tap_code16(S(KC_TAB));
+                }
+                break;
         }
     } else if (index == 1) {
         // Page up/Page down
