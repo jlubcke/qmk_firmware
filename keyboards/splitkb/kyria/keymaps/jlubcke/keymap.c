@@ -31,6 +31,16 @@ enum layers {
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 
+// Home row modifiers
+#define HRM_A    LSFT_T(KC_A)
+#define HRM_S    LCTL_T(KC_S)
+#define HRM_D    LALT_T(KC_D)
+#define HRM_F    LGUI_T(KC_F)
+#define HRM_J    RGUI_T(KC_J)
+#define HRM_K    LALT_T(KC_K)
+#define HRM_L    RCTL_T(KC_L)
+#define HRM_SCLN RSFT_T(KC_SCLN)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
@@ -43,14 +53,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |Adjust| LAlt | LGUI |Lower/|  |Raise/| RGUI | AltGr|  App |      |
+ *                        | LGUI |Adjust| LAlt | LGUI |Lower/|  |Raise/| RGUI | AltGr|Adjust|      |
  *                        |      |      |      |      |Enter |  |Space |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
      KC_TAB  ,  KC_Q   ,  KC_W   ,  KC_E   ,   KC_R  ,   KC_T  ,                                          KC_Y   ,  KC_U   ,  KC_I   ,  KC_O   ,  KC_P   , KC_TILD ,
-     CTL_ESC ,  KC_A   ,  KC_S   ,  KC_D   ,   KC_F  ,   KC_G  ,                                          KC_H   ,  KC_J   ,  KC_K   ,  KC_L   , KC_SCLN , KC_QUOT  ,
-     KC_LSFT ,  KC_Z   ,  KC_X   ,  KC_C   ,   KC_V  ,   KC_B  , KC_DEL  , UPR_SPC , LWR_ENT , KC_BSPC ,  KC_N   ,  KC_M   , KC_COMM , KC_DOT  , KC_SLSH , KC_RSFT  ,
+     CTL_ESC ,  HRM_A  ,  HRM_S  ,  HRM_D  ,   HRM_F ,   KC_G  ,                                          KC_H   ,  HRM_J  ,  HRM_K  ,  HRM_L  , HRM_SCLN, KC_QUOT ,
+     KC_LSFT ,  KC_Z   ,  KC_X   ,  KC_C   ,   KC_V  ,   KC_B  , KC_DEL  , UPR_SPC , LWR_ENT , KC_BSPC ,  KC_N   ,  KC_M   , KC_COMM , KC_DOT  , KC_SLSH , KC_RSFT ,
                                    KC_LGUI , ADJUST  , KC_LALT , KC_LGUI , LWR_ENT , UPR_SPC , KC_RGUI , KC_RALT , ADJUST  , KC_NO
     ),
 
@@ -102,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |        |M Prev|M Play|M Next| VolDn| VolUp|                              |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |      |ScrlLk| Pause|                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
+ * | CapsLk |ScolLk| NumLk|      |ScrlLk| Pause|                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      | Reset|  | Reset|      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -112,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_ADJUST] = LAYOUT(
       _______ , KC_MPRV , KC_MPLY , KC_MNXT , KC_VOLD , KC_VOLU ,                                         _______ , _______ , _______ , _______ ,  _______ , _______ ,
-      _______ , _______ , _______ , _______ , KC_SCRL , KC_PAUS ,                                         RGB_TOG , RGB_SAI , RGB_HUI , RGB_VAI ,  RGB_MOD , _______ ,
+      KC_CAPS , KC_SCRL , KC_NUM  , _______ , KC_SCRL , KC_PAUS ,                                         RGB_TOG , RGB_SAI , RGB_HUI , RGB_VAI ,  RGB_MOD , _______ ,
       _______ , _______ , _______ , _______ , _______ , _______ , _______ , QK_BOOT , QK_BOOT , _______ , _______ , RGB_SAD , RGB_HUD , RGB_VAD , RGB_RMOD , _______ ,
                                     KC_NO   , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , KC_NO
     ),
