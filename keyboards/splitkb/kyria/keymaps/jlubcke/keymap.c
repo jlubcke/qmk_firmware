@@ -22,7 +22,7 @@ enum layers {
 #define HRM_D    LALT_T(KC_D)
 #define HRM_F    LGUI_T(KC_F)
 #define HRM_J    RGUI_T(KC_J)
-#define HRM_K    LALT_T(KC_K)
+#define HRM_K    RALT_T(KC_K)
 #define HRM_L    RCTL_T(KC_L)
 #define HRM_SCLN RSFT_T(KC_SCLN)
 
@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: QWERTY
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  ~ `   |
+ * |  Tab   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  ` ~   |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Esc|   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_TAB  ,  KC_Q   ,  KC_W   ,  KC_E   ,   KC_R  ,   KC_T  ,                                          KC_Y   ,  KC_U   ,  KC_I   ,  KC_O   ,  KC_P   , KC_TILD ,
+     KC_TAB  ,  KC_Q   ,  KC_W   ,  KC_E   ,   KC_R  ,   KC_T  ,                                          KC_Y   ,  KC_U   ,  KC_I   ,  KC_O   ,  KC_P   , KC_GRV  ,
      CTL_ESC ,  HRM_A  ,  HRM_S  ,  HRM_D  ,   HRM_F ,   KC_G  ,                                          KC_H   ,  HRM_J  ,  HRM_K  ,  HRM_L  , HRM_SCLN, KC_QUOT ,
      KC_LSFT ,  KC_Z   ,  KC_X   ,  KC_C   ,   KC_V  ,   KC_B  , KC_DEL  , UPR_SPC , LWR_ENT , KC_BSPC ,  KC_N   ,  KC_M   , KC_COMM , KC_DOT  , KC_SLSH , KC_RSFT ,
                                    KC_LGUI , ADJUST  , KC_LALT , KC_LGUI , LWR_ENT , UPR_SPC , KC_RGUI , KC_RALT , ADJUST  , KC_NO
