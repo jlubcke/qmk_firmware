@@ -53,9 +53,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Lower layer
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   1  |   2  |   3  |   4  |   5  |                              |   6  |   7  |   8  |   9  |   0  |        |
+ * |  Tab   |   !  |   @  |   #  |   $  |   %  |                              |   ^  |   7  |   8  |   9  |   &  |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |Ctrl/Esc|   !  |   @  |   #  |   $  |   %  |                              |   ^  |   4  |   5  |   6  |   &  |        |
+ * |Ctrl/Esc|   1  |   2  |   3  |   4  |   5  |                              |   6  |   4  |   5  |   6  |   0  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   +  |   =  |   _  |   -  |  DEL |      |      |  |      |      |   0  |   1  |   2  |   3  |   *  | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_LOWER] = LAYOUT(
     KC_TAB,  KC_EXLM,      KC_AT,        KC_HASH,      KC_DLR,       KC_PERC,                                     KC_CIRC, KC_7,         KC_8,         KC_9,         KC_AMPR,      KC_TRNS,
-    CTL_ESC, LSFT_T(KC_1), LCTL_T(KC_2), LALT_T(KC_3), LGUI_T(KC_3), KC_4,                                        KC_6,    RGUI_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), RSFT_T(KC_0), KC_TRNS ,
+    CTL_ESC, LSFT_T(KC_1), LCTL_T(KC_2), LALT_T(KC_3), LGUI_T(KC_4), KC_5,                                        KC_6,    RGUI_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), RSFT_T(KC_0), KC_TRNS ,
     KC_TRNS, KC_PLUS,      KC_EQL,       KC_UNDS,      KC_MINS,      KC_DEL,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_0,    KC_1,         KC_2,         KC_3,         KC_ASTR,      KC_TRNS ,
                                          KC_NO,        KC_TRNS,      KC_LALT, KC_LGUI, KC_TRNS, KC_TRNS, KC_RGUI, KC_RALT, KC_0,         KC_NO
     ),
