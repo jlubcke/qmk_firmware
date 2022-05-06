@@ -295,6 +295,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code(KC_VOLD);
                 }
                 break;
+            case _UPPER:
+                // Volume
+                if (clockwise){
+                    tap_code(KC_PPLS);
+                } else{
+                    tap_code(KC_PMNS);
+                }
+                break;
             default:
                 // Switch app
                 if (clockwise) {
