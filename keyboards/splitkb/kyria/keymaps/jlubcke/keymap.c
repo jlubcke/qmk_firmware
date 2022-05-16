@@ -32,32 +32,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: QWERTY
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  ` ~   |
+ * |  Tab   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  \ |   |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Esc|   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * |  ` ~   |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        | LGUI |Adjust| LAlt | LGUI |Lower/|  |Raise/| RGUI | AltGr|Adjust|      |
  *                        |      |      |      |      |Enter |  |Space |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_TAB,   KC_Q,  KC_W,  KC_E,    KC_R ,  KC_T,                                        KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_GRV,
-     CTL_ESC,  HRM_A, HRM_S, HRM_D,   HRM_F,  KC_G,                                        KC_H,    HRM_J,  HRM_K,   HRM_L,  HRM_SCLN, KC_QUOT,
-     KC_LSFT,  KC_Z,  KC_X,  KC_C,    KC_V,   KC_B,    KC_DEL,  UPR_SPC, LWR_ENT, KC_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH , KC_RSFT,
-                             KC_LGUI, ADJUST, KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST, KC_NO
+     KC_TAB,         KC_Q,  KC_W,  KC_E,    KC_R ,  KC_T,                                        KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_BSLS,
+     CTL_ESC,        HRM_A, HRM_S, HRM_D,   HRM_F,  KC_G,                                        KC_H,    HRM_J,  HRM_K,   HRM_L,  HRM_SCLN, KC_QUOT,
+     LSFT_T(KC_GRV), KC_Z,  KC_X,  KC_C,    KC_V,   KC_B,    KC_DEL,  UPR_SPC, LWR_ENT, KC_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH , KC_RSFT,
+                                   KC_LGUI, ADJUST, KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST, KC_NO
     ),
 
 /*
  * Lower layer
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   !  |   @  |   #  |   $  |   %  |                              |   ^  |   7  |   8  |   9  |   &  |        |
+ * |  Tab   |   !  |   @  |   #  |   $  |   %  |                              |   ^  |   7  |   8  |   9  |   &  |   \ |  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Esc|   1  |   2  |   3  |   4  |   5  |                              |   6  |   4  |   5  |   6  |   0  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   +  |   =  |   _  |   -  |  DEL |      |      |  |      |      |   0  |   1  |   2  |   3  |   *  | RShift |
+ * |  ` ~   |   +  |   =  |   _  |   -  |  DEL |      |      |  |      |      |   0  |   1  |   2  |   3  |   *  | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |   0  |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Upper layer
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |  F1  |  F2  |  F3  |  F4  |  F5  |                              | PgUp | Home |  Up  |  End |  Ins | | \ |  |
+ * |  Tab   |  F1  |  F2  |  F3  |  F4  |  F5  |                              | PgUp | Home |  Up  |  End |  Ins |  \ |   |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Esc|  F6  |  F7  |  F8  |  F9  |  F10 |                              | PgDn | Left | Down | Right|   {  |    }   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |  F11 |  F12 |      |      |      |      |      |  |      |      | Bksp |   (  |   )  |  [ { | ]  } | RShift |
+ * |  ` ~   |  F11 |  F12 |      |      |      |      |      |  |      |      | Bksp |   (  |   )  |  [ { | ]  } | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
