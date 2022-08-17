@@ -33,3 +33,4 @@
 
 #define SPLIT_WPM_ENABLE
 #define LAYER_STATE_8BIT
+#define EE_HANDS
