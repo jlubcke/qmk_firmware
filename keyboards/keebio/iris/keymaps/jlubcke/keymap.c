@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  * ,-------------------------------------------.                ,-------------------------------------------.
  * |        |  <<  |  |>  |  >>  | Vol+ | Vol- |                |      |      |      |      |      |        |
- * ,-------------------------------------------.                ,-------------------------------------------.
+ * |-------------------------------------------.                ,-------------------------------------------|
  * |  Tab   |   Q  |   W  |   E  |   R  |   T  |                |   Y  |   U  |   I  |   O  |   P  |  \ |   |
  * |--------+------+------+------+------+------|                |------+------+------+------+------+--------|
  * |Ctrl/Esc|   A  |   S  |   D  |   F  |   G  |                |   H  |   J  |   K  |   L  | ;  : |  ' "   |
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_NO,          KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLD, KC_VOLU,                    KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,    KC_NO,
      KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_BSLS,
      CTL_ESC,        HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                       KC_H,    HRM_J,  HRM_K,   HRM_L,  HRM_SCLN, KC_QUOT,
-     LSFT_T(KC_GRV), KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    UPR_DEL, LWR_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
+     LSFT_T(KC_GRV), KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    UPR_DEL, LWR_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH,  KC_RSFT,
                                                 KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC,  KC_RGUI, KC_RALT
     ),
 
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  * ,-------------------------------------------.                ,-------------------------------------------.
  * |        |      |      |      |      |      |                |      |      |      |      |      |        |
- * ,-------------------------------------------.                ,-------------------------------------------.
+ * |-------------------------------------------.                ,-------------------------------------------|
  * |  Tab   |   !  |   @  |   #  |   $  |   %  |                |   ^  |   7  |   8  |   9  |   &  |   \ |  |
  * |--------+------+------+------+------+------|                |------+------+------+------+------+--------|
  * |Ctrl/Esc|   1  |   2  |   3  |   4  |   5  |                |   6  |   4  |   5  |   6  |   0  |        |
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_EXLM,      KC_AT,        KC_HASH,      KC_DLR,       KC_PERC,                  KC_CIRC, KC_7,         KC_8,         KC_9,         KC_AMPR,      KC_TRNS,
     CTL_ESC, LSFT_T(KC_1), LCTL_T(KC_2), LALT_T(KC_3), LGUI_T(KC_4), KC_5,                     KC_6,    RGUI_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), RSFT_T(KC_0), KC_TRNS ,
     KC_TRNS, KC_PLUS,      KC_EQL,       KC_UNDS,      KC_MINS,      KC_DEL,  KC_DEL, KC_BSPC, KC_0,    KC_1,         KC_2,         KC_3,         KC_ASTR,      KC_TRNS ,
-                                                       KC_LALT,      KC_LGUI, KC_ENT, KC_SPC,  KC_RGUI, KC_RALT
+                                                       KC_LALT,      KC_LGUI, KC_ENT, KC_SPC,  KC_RGUI, KC_0
     ),
 
 /*
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  * ,-------------------------------------------.                ,-------------------------------------------.
  * |        |      |      |      |      |      |                |      |      |      |      |      |        |
- * ,-------------------------------------------.          `      ,-------------------------------------------.
+ * |-------------------------------------------.                ,-------------------------------------------|
  * |  Tab   |  F1  |  F2  |  F3  |  F4  |  F5  |                | PgUp | Home |  Up  |  End |  Ins |  \ |   |
  * |--------+------+------+------+------+------|                |------+------+------+------+------+--------|
  * |Ctrl/Esc|  F6  |  F7  |  F8  |  F9  |  F10 |                | PgDn | Left | Down | Right|   {  |    }   |
