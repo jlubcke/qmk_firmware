@@ -9,9 +9,9 @@ enum layers {
 
 #define QWERTY   DF(_QWERTY)
 #define LWR_ENT  LT(_LOWER, KC_ENT)
-#define LWR_BSPC LT(_LOWER, KC_DEL)
+#define LWR_BSPC LT(_LOWER, KC_BSPC)
 #define UPR_SPC  LT(_UPPER, KC_SPC)
-#define UPR_DEL  LT(_UPPER, KC_BSPC)
+#define UPR_DEL  LT(_UPPER, KC_DEL)
 #define ADJUST   MO(_ADJUST)
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
