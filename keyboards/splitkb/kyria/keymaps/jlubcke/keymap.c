@@ -76,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |  Tab   |  F1  |  F2  |  F3  |  F4  |  F5  |                              | PgUp | Home |  Up  |  End |  Ins |  \ |   |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |Ctrl/Esc|  F6  |  F7  |  F8  |  F9  |  F10 |                              | PgDn | Left | Down | Right|   {  |    }   |
+ * |Ctrl/Esc|  F6  |  F7  |  F8  |  F9  |  F10 |                              | PgDn | Left | Down | Right|   [  |   [    |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |  ` ~   |  F11 |  F12 |      |      |      |      |      |  |      |      | Bksp |   (  |   )  |  [ { | ]  } | RShift |
+ * |  ` ~   |  F11 |  F12 |      |      |      |      |      |  |      |      | Bksp |   (  |   )  |   {  |   }  | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -86,8 +86,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_UPPER] = LAYOUT(
      KC_TAB,  KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5 ,                                      KC_PGUP, KC_HOME,         KC_UP,            KC_END,          KC_INS,          KC_BSLS,
-     CTL_ESC, LSFT_T(KC_F6), LCTL_T(KC_F7), LALT_T(KC_F8), LGUI_T(KC_F9), KC_F10,                                      KC_PGDN, RGUI_T(KC_LEFT), RALT_T(KC_DOWN) , RCTL_T(KC_RGHT), RSFT_T(KC_LCBR), KC_RCBR,
-     KC_TRNS, KC_F1,         KC_F12,        KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_LPRN,         KC_RPRN,          KC_LBRC,         KC_RBRC,         KC_TRNS,
+     CTL_ESC, LSFT_T(KC_F6), LCTL_T(KC_F7), LALT_T(KC_F8), LGUI_T(KC_F9), KC_F10,                                      KC_PGDN, RGUI_T(KC_LEFT), RALT_T(KC_DOWN) , RCTL_T(KC_RGHT), RSFT_T(KC_LBRC), KC_RBRC,
+     KC_TRNS, KC_F1,         KC_F12,        KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_LPRN,         KC_RPRN,          KC_LCBR,         KC_RCBR,         KC_TRNS,
                                             KC_NO,         KC_TRNS,       KC_LALT, KC_LGUI, KC_TRNS, KC_TRNS, KC_RGUI, KC_RALT, KC_APP,          KC_NO
     ),
 
