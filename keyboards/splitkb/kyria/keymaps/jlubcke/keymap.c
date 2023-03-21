@@ -38,8 +38,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |  ` ~   |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | LGUI |Adjust| LAlt | LGUI |Lower/|  |Raise/| RGUI | AltGr|Adjust|Adjust|
- *                        |      |      |      |      |Enter |  |Space |      |      |      |      |
+ *                        | Tab  |      |      |      | Enter|  | Space|      |      |      | Up   |
+ *                        | ShTab|      |      |      |      |  |      |      |      |      | Down |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
@@ -295,7 +295,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code(KC_VOLD);
                 }
                 break;
-            case _UPPER:
+            case _LOWER:
                 // Plus/minus
                 if (clockwise){
                     tap_code(KC_PPLS);
@@ -321,6 +321,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 } else {
                     tap_code(KC_PGDN);
                 }
+            case _UPPER:
+                // Plus/minus
+                if (clockwise){
+                    tap_code(KC_LEFT);
+                } else{
+                    tap_code(KC_RIGHT);
+                }
+                break;
             default:
                 // Arrows
                 if (clockwise){
