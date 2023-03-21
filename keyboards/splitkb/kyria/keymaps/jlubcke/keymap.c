@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |  ` ~   |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | LGUI |Adjust| LAlt | LGUI |Lower/|  |Raise/| RGUI | AltGr|Adjust|      |
+ *                        | LGUI |Adjust| LAlt | LGUI |Lower/|  |Raise/| RGUI | AltGr|Adjust|Adjust|
  *                        |      |      |      |      |Enter |  |Space |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB,         KC_Q,  KC_W,  KC_E,    KC_R ,  KC_T,                                        KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_BSLS,
      CTL_ESC,        HRM_A, HRM_S, HRM_D,   HRM_F,  KC_G,                                        KC_H,    HRM_J,  HRM_K,   HRM_L,  HRM_SCLN, KC_QUOT,
      LSFT_T(KC_GRV), KC_Z,  KC_X,  KC_C,    KC_V,   KC_B,    KC_DEL,  UPR_SPC, LWR_ENT, KC_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH , KC_RSFT,
-                                   KC_LGUI, ADJUST, KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST, KC_NO
+                                   KC_LGUI, ADJUST, KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST, ADJUST
     ),
 
 /*
@@ -296,7 +296,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
             case _UPPER:
-                // Volume
+                // Plus/minus
                 if (clockwise){
                     tap_code(KC_PPLS);
                 } else{
@@ -314,21 +314,21 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         switch(biton32(layer_state)) {
-            case _LOWER:
-                // Arrows
-                if (clockwise){
-                    tap_code(KC_RGHT);
-                } else {
-                    tap_code(KC_LEFT);
-                }
-                break;
-            default:
+            case _ADJUST:
                 // Page up/Page down
                 if (clockwise) {
-                    tap_code(KC_PGDN);
-                } else {
                     tap_code(KC_PGUP);
+                } else {
+                    tap_code(KC_PGDN);
                 }
+            default:
+                // Arrows
+                if (clockwise){
+                    tap_code(KC_UP);
+                } else {
+                    tap_code(KC_DOWN);
+                }
+                break;
         }
     }
     return false;
