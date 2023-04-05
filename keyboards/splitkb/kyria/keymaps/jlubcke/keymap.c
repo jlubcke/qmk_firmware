@@ -38,9 +38,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      | Uppe |  | Lower|      |      |      |      |      |      |Shift |
  * `--------------------+------+------+------+------+------|  |------+------+------+------+------+--------------------'
- *                      | LGUI |Adjust| Alt  | Cmd  | Lower|  | Uppe | Cmd  |AltGr |Adjust|Adjust|
+ *                      |      |Adjust| Alt  | Cmd  | Lower|  | Uppe | Cmd  |AltGr |Adjust|      |
  *                      `----------------------------------'  `----------------------------------'
  */
+
+/*
+ * Upper layer
+ *
+ * ,------------------------------------------.                              ,------------------------------------------.
+ * |  Tab  |  F1  |  F2  |  F3  |  F4  |  F5  |                              | PgUp | Home |  Up  |  End |  Ins |  \ |  |
+ * |-------+------+------+------+------+------|                              |------+------+------+------+------+-------|
+ * |  Esc  |  F6  |  F7  |  F8  |  F9  |  F10 |                              | PgDn | Left | Down | Right|   [  |   [   |
+ * |-------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
+ * |  ` ~  |  F11 |  F12 |      |      |      |      |      |  |      |      | Bksp |   (  |   )  |   {  |   }  |       |
+ * `---------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
+ *                       |  +   |      |      |      |      |  |      |      |      |      | Left |
+ *                       |   -  |      |      |      |      |  |      |      |      |      | Right|
+ *                       `----------------------------------'  `----------------------------------'
+ */
+    [_UPPER] = LAYOUT(
+     KC_TAB,  KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5 ,                                      KC_PGUP, KC_HOME,         KC_UP,            KC_END,          KC_INS,          KC_BSLS,
+     CTL_ESC, LSFT_T(KC_F6), LCTL_T(KC_F7), LALT_T(KC_F8), LGUI_T(KC_F9), KC_F10,                                      KC_PGDN, RGUI_T(KC_LEFT), RALT_T(KC_DOWN) , RCTL_T(KC_RGHT), RSFT_T(KC_LBRC), KC_RBRC,
+     KC_TRNS, KC_F1,         KC_F12,        KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_LPRN,         KC_RPRN,          KC_LCBR,         KC_RCBR,         KC_TRNS,
+                                            KC_NO,         KC_TRNS,       KC_LALT, KC_LGUI, KC_TRNS, KC_TRNS, KC_RGUI, KC_RALT, KC_APP,          KC_NO
+    ),
 
 /*
  * Base Layer: QWERTY
@@ -53,14 +74,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  ` ~  |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | Shift |
  * `---------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
  *                       | Tab  |      |      |      | Enter|  | Space|      |      |      | Up   |
- *                       | ShTab|      |      |      |      |  |      |      |      |      | Down |
- *                       `----------------------------------'  `----------------------------------'
+ *                       | ShTab|----------------------------------------------------------| Down |
+ *                       `------'                                                          `------'
  */
     [_QWERTY] = LAYOUT(
-     KC_TAB,         KC_Q,  KC_W,  KC_E,    KC_R ,  KC_T,                                        KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_BSLS,
-     CTL_ESC,        HRM_A, HRM_S, HRM_D,   HRM_F,  KC_G,                                        KC_H,    HRM_J,  HRM_K,   HRM_L,  HRM_SCLN, KC_QUOT,
-     LSFT_T(KC_GRV), KC_Z,  KC_X,  KC_C,    KC_V,   KC_B,    KC_DEL,  UPR_SPC, LWR_ENT, KC_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH , KC_RSFT,
-                                   KC_LGUI, ADJUST, KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST, ADJUST
+     KC_TAB,         KC_Q,  KC_W,  KC_E,   KC_R ,  KC_T,                                        KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_BSLS,
+     CTL_ESC,        HRM_A, HRM_S, HRM_D,  HRM_F,  KC_G,                                        KC_H,    HRM_J,  HRM_K,   HRM_L,  HRM_SCLN, KC_QUOT,
+     LSFT_T(KC_GRV), KC_Z,  KC_X,  KC_C,   KC_V,   KC_B,    KC_DEL,  UPR_SPC, LWR_ENT, KC_BSPC, KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH , KC_RSFT,
+                                   KC_NO,  ADJUST, KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST, KC_NO
     ),
 
 /*
@@ -73,36 +94,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |  ` ~   |   +  |   =  |   _  |   -  |  DEL |      |      |  |      |      |   0  |   1  |   2  |   3  |   *  |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |  +   |      |      |      |      |  |      |      |      |      |   0  |
- *                        |   -  |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
+ *                        |  +   |      |      |      |      |  |      |      |      |   0  | Left |
+ *                        |   -  |----------------------------------------------------------| Right|
+ *                        `------'                                                          `------'
  */
     [_LOWER] = LAYOUT(
     KC_TAB,  KC_EXLM,      KC_AT,        KC_HASH,      KC_DLR,       KC_PERC,                                     KC_CIRC, KC_7,         KC_8,         KC_9,         KC_AMPR,      KC_TRNS,
     CTL_ESC, LSFT_T(KC_1), LCTL_T(KC_2), LALT_T(KC_3), LGUI_T(KC_4), KC_5,                                        KC_6,    RGUI_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), RSFT_T(KC_0), KC_TRNS ,
     KC_TRNS, KC_PLUS,      KC_EQL,       KC_UNDS,      KC_MINS,      KC_DEL,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_0,    KC_1,         KC_2,         KC_3,         KC_ASTR,      KC_TRNS ,
                                          KC_NO,        KC_TRNS,      KC_LALT, KC_LGUI, KC_TRNS, KC_TRNS, KC_RGUI, KC_RALT, KC_0,         KC_NO
-    ),
-
-/*
- * Upper layer
- *
- * ,------------------------------------------.                              ,------------------------------------------.
- * |  Tab  |  F1  |  F2  |  F3  |  F4  |  F5  |                              | PgUp | Home |  Up  |  End |  Ins |  \ |  |
- * |-------+------+------+------+------+------|                              |------+------+------+------+------+-------|
- * |  Esc  |  F6  |  F7  |  F8  |  F9  |  F10 |                              | PgDn | Left | Down | Right|   [  |   [   |
- * |-------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
- * |  ` ~  |  F11 |  F12 |      |      |      |      |      |  |      |      | Bksp |   (  |   )  |   {  |   }  |       |
- * `---------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
- *                       |      |      |      |      |      |  |      |      |      |      | Left |
- *                       |      |      |      |      |      |  |      |      |      |      | Right|
- *                       `----------------------------------'  `----------------------------------'
- */
-    [_UPPER] = LAYOUT(
-     KC_TAB,  KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5 ,                                      KC_PGUP, KC_HOME,         KC_UP,            KC_END,          KC_INS,          KC_BSLS,
-     CTL_ESC, LSFT_T(KC_F6), LCTL_T(KC_F7), LALT_T(KC_F8), LGUI_T(KC_F9), KC_F10,                                      KC_PGDN, RGUI_T(KC_LEFT), RALT_T(KC_DOWN) , RCTL_T(KC_RGHT), RSFT_T(KC_LBRC), KC_RBRC,
-     KC_TRNS, KC_F1,         KC_F12,        KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_LPRN,         KC_RPRN,          KC_LCBR,         KC_RCBR,         KC_TRNS,
-                                            KC_NO,         KC_TRNS,       KC_LALT, KC_LGUI, KC_TRNS, KC_TRNS, KC_RGUI, KC_RALT, KC_APP,          KC_NO
     ),
 
 /*
@@ -115,8 +115,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |ScrlLk| Pause|      | Reset|  | Reset|      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      | PgUp |
- *                        |      |      |      |      |      |  |      |      |      |      | PgDn |
+ *                        | Vol+ |      |      |      |      |  |      |      |      |      | PgUp |
+ *                        | Vol- |      |      |      |      |  |      |      |      |      | PgDn |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
@@ -301,55 +301,67 @@ void render_anim(void)
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         switch(biton32(layer_state)) {
-            case _ADJUST:
-                // Volume
-                if (clockwise){
-                    tap_code(KC_VOLU);
-                } else{
-                    tap_code(KC_VOLD);
-                }
-                break;
-            case _LOWER:
-                // Plus/minus
+            case _UPPER:
                 if (clockwise){
                     tap_code(KC_PPLS);
                 } else{
                     tap_code(KC_PMNS);
                 }
                 break;
-            default:
-                // Switch app
+            case _QWERTY:
                 if (clockwise) {
                     tap_code16(KC_TAB);
                 } else {
                     tap_code16(S(KC_TAB));
                 }
                 break;
+            case _LOWER:
+                if (clockwise){
+                    tap_code(KC_PPLS);
+                } else{
+                    tap_code(KC_PMNS);
+                }
+                break;
+            case _ADJUST:
+                if (clockwise){
+                    tap_code(KC_VOLU);
+                } else{
+                    tap_code(KC_VOLD);
+                }
+                break;
+            default:
+                break;
         }
     } else if (index == 1) {
         switch(biton32(layer_state)) {
-            case _ADJUST:
-                // Page up/Page down
-                if (clockwise) {
-                    tap_code(KC_PGUP);
-                } else {
-                    tap_code(KC_PGDN);
-                }
             case _UPPER:
-                // Plus/minus
                 if (clockwise){
                     tap_code(KC_LEFT);
                 } else{
                     tap_code(KC_RIGHT);
                 }
                 break;
-            default:
-                // Arrows
+            case _QWERTY:
                 if (clockwise){
                     tap_code(KC_UP);
                 } else {
                     tap_code(KC_DOWN);
                 }
+                break;
+            case _LOWER:
+                if (clockwise){
+                    tap_code(KC_LEFT);
+                } else{
+                    tap_code(KC_RIGHT);
+                }
+                break;
+            case _ADJUST:
+                if (clockwise) {
+                    tap_code(KC_PGUP);
+                } else {
+                    tap_code(KC_PGDN);
+                }
+            default:
                 break;
         }
     }
