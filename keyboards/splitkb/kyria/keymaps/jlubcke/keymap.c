@@ -58,10 +58,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                       `------'                                                          `------'
  */
     [_UPPER] = LAYOUT(
-     KC_TAB,  KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5 ,                                      KC_PGUP, KC_HOME,         KC_UP,            KC_END,          KC_INS,          KC_BSLS,
-     CTL_ESC, LSFT_T(KC_F6), LCTL_T(KC_F7), LALT_T(KC_F8), LGUI_T(KC_F9), KC_F10,                                      KC_PGDN, RGUI_T(KC_LEFT), RALT_T(KC_DOWN) , RCTL_T(KC_RGHT), RSFT_T(KC_LBRC), KC_RBRC,
-     KC_TRNS, KC_F1,         KC_F12,        KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_LPRN,         KC_RPRN,          KC_LCBR,         KC_RCBR,         KC_TRNS,
-                                            ADJUST,        ADJUST,        KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST,          ADJUST
+     KC_TAB,  KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5 ,                                      KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_INS,          KC_BSLS,
+     CTL_ESC, LSFT_T(KC_F6), LCTL_T(KC_F7), LALT_T(KC_F8), LGUI_T(KC_F9), KC_F10,                                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, RSFT_T(KC_LBRC), KC_RBRC,
+     KC_TRNS, KC_F1,         KC_F12,        KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSPC, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,         KC_TRNS,
+                                            ADJUST,        ADJUST,        KC_LALT, KC_LGUI, LWR_ENT, UPR_SPC, KC_RGUI, KC_RALT, ADJUST,  ADJUST
     ),
 
 /*
