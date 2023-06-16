@@ -34,4 +34,4 @@
 #define SPLIT_WPM_ENABLE
 #define LAYER_STATE_8BIT
 #define EE_HANDS
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
