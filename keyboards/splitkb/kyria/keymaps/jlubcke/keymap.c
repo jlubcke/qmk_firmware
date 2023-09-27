@@ -53,8 +53,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
  * |  ` ~  |  F11 |  F12 |      |      |      |      | #### |  |      |      | Bksp |   (  |   )  |   {  |   }  | Shift |
  * `---------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
- *                       |  +   |      |      |      |      |  | #### |      |      |      | Left |
- *                       |   -  |----------------------------------------------------------| Right|
+ *                       | Left |      |      |      |      |  | #### |      |      |      | Up   |
+ *                       | Right|----------------------------------------------------------| Down |
  *                       `------'                                                          `------'
  */
     [_UPPER] = LAYOUT(
@@ -74,8 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+-------|
  * |  ` ~  |   Z  |   X  |   C  |   V  |   B  |  Del | Space|  | Enter| Bksp |   N  |   M  | ,  < | . >  | /  ? | Shift |
  * `---------------------+------+------+------+------+------|  |------+------+------+------+------+---------------------'
- *                       | Tab  |      |      |      | Enter|  | Space|      |      |      | Up   |
- *                       | ShTab|----------------------------------------------------------| Down |
+ *                       | Tab  |      |      |      | Enter|  | Space|      |      |      | PgUp |
+ *                       | ShTab|----------------------------------------------------------| PgDn |
  *                       `------'                                                          `------'
  */
     [_QWERTY] = LAYOUT(
@@ -116,8 +116,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |ScrlLk| Pause|      | Reset|  | Reset|      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | Vol+ |      |      |      |      |  |      |      |      |      | PgUp |
- *                        | Vol- |      |      |      |      |  |      |      |      |      | PgDn |
+ *                        | Vol+ |      |      |      |      |  |      |      |      |      | Dsp+ |
+ *                        | Vol- |      |      |      |      |  |      |      |      |      | Dsp- |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
@@ -284,9 +284,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         switch(biton32(layer_state)) {
             case _UPPER:
                 if (clockwise){
-                    tap_code(KC_PPLS);
+                    tap_code(KC_RIGHT);
                 } else{
-                    tap_code(KC_PMNS);
+                    tap_code(KC_LEFT);
                 }
                 break;
             case _QWERTY:
@@ -317,16 +317,16 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         switch(biton32(layer_state)) {
             case _UPPER:
                 if (clockwise){
-                    tap_code(KC_LEFT);
-                } else{
-                    tap_code(KC_RIGHT);
+                    tap_code(KC_UP);
+                } else {
+                    tap_code(KC_DOWN);
                 }
                 break;
             case _QWERTY:
                 if (clockwise){
-                    tap_code(KC_UP);
-                } else {
-                    tap_code(KC_DOWN);
+                    tap_code(KC_PGUP);
+                } else{
+                    tap_code(KC_PGDN);
                 }
                 break;
             case _LOWER:
@@ -338,9 +338,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 break;
             case _ADJUST:
                 if (clockwise) {
-                    tap_code(KC_PGUP);
+                    tap_code(KC_SCRL);
                 } else {
-                    tap_code(KC_PGDN);
+                    tap_code(KC_PAUS);
                 }
             default:
                 break;
